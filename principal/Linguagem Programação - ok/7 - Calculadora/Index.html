@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Folha de Pagamento</title>
+    <link rel="stylesheet" href="./CSS/calculadora.css">
+</head>
+<body>
+    <header>
+        <h1>Calculadora Trabalhista</h1>
+    </header>
+    <main>
+        <div class="entrada">
+            <form id="formentrada">
+                <label for="salarioBruto">Salário:</label><br>
+                <input type="number" name="salarioBruto" id="salarioBruto"><br>
+
+                <label for="dependentes">Dependentes:</label><br> 
+                <input type="number" name="dependentes" id="dependentes"><br>
+
+                <form>
+                    <label for="checkbox">Vale Transporte</label>
+                    <input type="checkbox" name="checkbox" id="checkbox">       
+                </form>
+            </form>
+            <button class="button" id="button" >Calcular</button>
+        </div> 
+        <div class="saida" id="saida" style="overflow-x:auto;"> 
+            <table>
+                <tr>
+                    <td>Salário Bruto: </td>
+                    <td id="salarioBrutosaida"> R$0.00 </td>
+                </tr>
+                <tr>
+                    <td>INSS: </td>
+                    <td id="inssSaida"></td>
+                </tr>
+                <tr>
+                    <td>IRRF: </td>
+                    <td id="irrfSaida"></td>
+                </tr>
+                <tr>
+                    <td>Vale Transporte: </td>
+                    <td id="valeTransporteSaida"></td>
+                </tr>
+                <tr>
+                    <td>Descontos: </td>
+                    <td id="descontosSaida"></td>
+                </tr>
+                <tr>
+                    <td>Salário Líquido: </td>
+                    <td id="salarioLiquidosaida"></td>
+                </tr>
+              </table>
+            <input type="reset" form="formentrada" id="btreset" class="btReset" value="Recalcular">
+        </div>   
+    </main>
+    <footer>
+        <p>Todos os direitos reservados &#169; Meu Site HTML5 Semântico</p>
+    </footer>
+    
+</body>
+    <script src="./JS/calculadora.js"></script>
+</html>

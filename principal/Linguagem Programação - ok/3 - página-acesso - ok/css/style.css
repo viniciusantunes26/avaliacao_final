@@ -1,0 +1,7 @@
+body{
+    background-color: black; /* COmentário para CSS */
+    color: white;
+    display: flex;
+    justify-content: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

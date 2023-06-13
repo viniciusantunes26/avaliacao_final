@@ -1,0 +1,22 @@
+body{
+    background-color: black;
+    text-align: center;
+    color:white;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-size: 20px;
+}
+
+#click{
+    width: 150px;
+    height: 80px;
+    background-color: green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
