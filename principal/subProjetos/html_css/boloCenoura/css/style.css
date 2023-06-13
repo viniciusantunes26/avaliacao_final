@@ -1,0 +1,48 @@
+*{
+    padding-top: 10px;
+    padding-right: 40px;
+    margin: 0;
+}
+main{
+    display: flex;
+}
+header{
+    width: 100%;
+    padding-left: 30px;
+}
+section h2{
+    padding: 30px;
+}
+.parte1{
+    width: 100%;
+    padding: 60px;
+}
+.parte1 ul{
+    padding-top: 30px;
+    padding-left: 50px;
+}
+.parte2{
+    width: 100%;
+    padding: 60px;
+}
+
+.parte2 ul{
+    padding-top: 30px;
+    padding-left: 50px;
+}
+
+.imagem {
+    padding-top: 40px;
+}
+.bolo img{
+    width: 250 px;
+    height: 250 px;
+}
+.imagem{
+    width: auto;
+    height: auto;
+}
+footer{
+    align-items: center;
+    text-align: center;
+}
