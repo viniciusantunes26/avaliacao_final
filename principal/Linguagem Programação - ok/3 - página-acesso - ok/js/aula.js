@@ -90,7 +90,7 @@
  var n1 = Number(prompt("Digite um número"))
  var n2 = Number(prompt("Digite outro número"))
  var resultado = n1 + n2
- window.alert("O resultado da soma é " &[resultado])
+ window.alert("O resultado da soma é " && [resultado])
 
  var n3 = Number(prompt("Digite um número"))
 
