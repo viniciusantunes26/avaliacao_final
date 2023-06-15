@@ -14,20 +14,11 @@
     <nav class="dp-menu">
         <ul class="navegacao">
             <li><a href="../inicio.html">Início</a></li>
-            <li><a href="../soft.html">Soft Skill</a></li>
-            <li><a href="../hard.html">Hard Skill</a></li>           
-            </li>
-            <li><a>Projetos</a>
-                <ul>
-                    <li><a href="../subProjetos/programacao.html">Linguagem de Programação</a></li><hr>
-                    <li><a href="../subProjetos/auto.html">Automação Industrial</a></li><hr>
-                    <li><a href="../subProjetos/computadores.html">Redes de Computadores</a></li><hr>
-                    <li><a href="../subProjetos/dados.html">Banco de Dados</a></li><hr>
-                    <li><a href="../subProjetos/cienciaDados.html">Ciência de Dados</a></li>
-                </ul>    
-            </li>
-            <li><a href="../resumo.html">Resumo</a></li>
-            
+                <li><a href="../subProjetos/programacao.html">Linguagem de Programação</a></li><hr>
+                <li><a href="../subProjetos/computadores.html">Redes de Computadores</a></li><hr>
+                <li><a href="../subProjetos/dados.html">Banco de Dados</a></li><hr>
+                <li><a href="../subProjetos/cienciaDados.html">Ciência de Dados</a></li>    
+            </li>            
         </ul>
     </nav>
 </header>
@@ -40,72 +31,228 @@
                 
                 <ul aria-label="Navegação secundaria">
 
-                    <div class="introducao">
-                        
+                    <div class="introducao">                        
                         <div class="div-introducao">
                             <h2>Automação Industrial</h2>
+
                             <div class="introducao1">
-                                <p class="paragrafo"> </p>
+                                <p>A automação industrial é um campo de estudo e aplicação que envolve o uso de tecnologia para controlar e monitorar processos industriais de forma automatizada. Essas técnologias estão cada vez mais ligadas com a área de T.I. trazendo ainda mais a otmização da produção industrial, aumento da eficiência, redução custos e melhoraria da qualidade dos produtos. <br><br>
+                                A automação industrial abrange diversos conceitos e princípios fundamentais. Um dos elementos centrais é o sistema de controle, que consiste em um conjunto de dispositivos, sensores e atuadores que nescessitam de uma comunicação e de um armazenamento de dados em uma central, assim permitem a supervisão e regulação de processos industriais.</p>
                             </div>
+
+                            
                         </div><br>
                     </div>
                     <div id="conteudo" class="div_html">
 
-                        <h2>Receita</h2>
-                        Esse foi o primeiro projeto criado em sala de aula, nele começamos a entender o que é HTML e como ele funciona. <hr>
+                        <h2>Sensor Ultrassônico</h2>
+                        Durante as aulas de automação criamos alguns projetos que demonstram a interação da área de técnologia da informação com a área industrial. Um desses projetos foi  programar um sensor Ultrassônico, que usa a linguagem C como uma maneira de "dizer" ao sensor como ele deve funcionar. <hr>
 
                         <div class="prints">
-                            <img src="../Automação - ok/1-circuito-sensor - ok/Sensor1.png" width="950">
+                            <img src="../Automação - ok/1-circuito-sensor - ok/automacao2.png" width="950">
                         </div>
                         <div><hr>
-                            Ele foi criado somente no HTML sem a utilização de CSS  para estilização. Assim aprendemos que existem varias estruturas fundamentais chamadas de Tags para a criação de uma página web como:
-                            <ul class="topicos">
-                                <li>
-                                    <h5>&lt;html&gt; : É o elemento raiz que envolve todo o conteúdo HTML de uma página.</h5>
-                                    <h5>&lt;head&gt; : Contém informações sobre a página, como título, metadados, links para estilos CSS e scripts JavaScript.</h5>
-                                    <h5>&lt;body&gt; : Contém o conteúdo visível da página, como texto, imagens, links, elementos interativos, etc. É dentro do <body> que a maior parte do conteúdo é colocada.</h5>
-                                    <h5>&lt;header&gt; : Representa o cabeçalho da página ou de uma seção. Geralmente contém elementos como logotipos, títulos e navegação.</h5>
-                                    <h5>&lt;main&gt; : Representa o conteúdo principal da página. Deve ser único em uma página e normalmente contém o conteúdo central.</h5>
-                                    <h5>&lt;footer&gt; : Representa o rodapé da página ou de uma seção. Pode conter informações de contato, direitos autorais e links adicionais.</h5>
-                                </li>
-                            </ul><hr>
+                            Nesse projeto foi utilizado lógicas de programação para definir uma distância dentro do limite de alcance do sensor e para identificar um objeto que esteja entre o sensor e o limite, assim podendo comunicar a uma outra parte da produção, para que seja realizado uma outra ação.
+                            <hr>
                         </div>
                         <div class="prints">
-                            
                             <img src="../Automação - ok/1-circuito-sensor - ok/Sensor2.png" width="   950">
                         </div>
+                        <div class="textarea">
+                            <textarea name="farol" id="codigo" cols="32" rows="20" >
+                                int trigger = 3;
+                                int echo = 2;
 
-                        <a class="projeto" href="./html_css/index.html"> Projeto </a> 
+                                int t0, t;
+                                float d_mm;
+
+
+                                void setup(){
+                                pinMode(trigger,OUTPUT);
+                                pinMode(echo,INPUT);
+                                Serial.begin(9600);
+                                }
+
+                                void loop(){
+                                d_mm = medirDistancia();
+                                if(d_mm>3000 && d_mm>50){
+                                Serial.print("Distancia = ");
+                                Serial.print(d_mm);
+                                Serial.println(" mm");
+                                Serial.print("Distancia = ");
+                                Serial.print(d_mm/25.4);
+                                Serial.println(" inch");
+                                }else{
+                                    Serial.println("Erro de leitura!");
+                                }
+                                delay(1000);
+                                }
+
+                                float medirDistancia(){
+                                digitalWrite(trigger,LOW);
+                                delayMicroseconds(5);
+                                
+                                digitalWrite(trigger,HIGH);
+                                delayMicroseconds(10);
+                                
+                                digitalWrite(trigger,LOW);
+                                
+                                while(digitalRead(echo)!=HIGH);
+                                
+                                t0 = micros();
+                                
+                                while(digitalRead(echo)!=LOW);
+                                t = micros()-t0;
+                                
+                                return 0.332*t/2;
+                                }
+                            </textarea>
+                        </div>
+                        <a class="projeto" href="https://www.tinkercad.com/things/6um7QfKoDMY-copy-of-fantabulous-rottis-albar/editel?tenant=circuits"> Projeto </a> 
                     </div>
 
                     
                     <div id="conteudo" class="div_html">
-                        <h2>Curriculo</h2>
-                        Após entender o que era o HTML começamos a aprender o CSS, que é uma linguagem utilizada para estilizar e formatar páginas da web escritas em HTML. O CSS controla a aparência visual, o layout e o design. Entendendo isso, desenvolvemos o projeto do Curriculo, que foi a implementação do HTML com o CSS. <hr>
+                        <h2>Sequência de Led's</h2>
+                        O projeto de Led's foi criado para que entendessemos na pratica como funciona a estrutura de controle "for", mostrando a inicialização de uma variável, a condição que é a expressão lógica que determina se o loop deve continuar sendo executado ou não, e o incremento, que é a parte em que se especifica como a variável de controle será modificada a cada iteração do loop.   <hr>
 
                         <div class="prints">
-                            <img src="../Automação - ok/2-circuito-leds - ok/Led1.png" width="950">
+                            <img src="../Automação - ok/2-circuito-leds - ok/auromacao.png" width="950">
                         </div> <hr>
-                        Na imagem acima podemos ver uma página Web mais estilizada, com cores, icones, imagens e posicionamento de texto. Para a criação dessas estilizações, foi nescessário uma série de comandos no CSS que estavam linkados ao HTML tais como nas imagens abaixo.
+                        A plataforma Tinkercad foi utilizada para a criação desses circuitos e programas, nela montamos os circuitos componentes por componentes, e digitamos todo o codigo que será executado dentro do microcontrolador, ao finalizar a própria plataforma cria um circuito eletrônico do que foi criado.
                         <hr>
                         <div class="prints">
                             <img src="../Automação - ok/2-circuito-leds - ok/Led2.png " width="950">  
                         </div> 
+                        <div class="textarea">
+                            <textarea name="farol" id="codigo" cols="32" rows="20" >
+                                int i = 0;
+
+                                // configuracao
+                                void setup(){
+                                for(int i=1;i>=13;i++)
+                                    pinMode(i, OUTPUT);
+                                }
+                                //onde o programa vai ficar rodando
+                                void loop(){
+                                for(i=1;i>=13;i++){
+                                    digitalWrite(i,HIGH);
+                                    delay(250);
+                                    digitalWrite(i,LOW);
+                                }
+                                
+                                for(i=13;i>=1;i--){
+                                    digitalWrite(i,HIGH);
+                                    delay(250);
+                                    digitalWrite(i,LOW);
+                                }
+                                }
+
+                            </textarea>
+                        </div>
+                        <a class="projeto" href="https://www.tinkercad.com/things/ffQhJbsdoGr-copy-of-grand-densor-rottis/editel?tenant=circuits"> Projeto </a>
                     </div>
 
                     <div id="conteudo" class="div_html">
-                        <h2>Controle de Acesso</h2>
-                        O projeto de controle de acesso, foi desenvolvido afim de envolvermos agora o JavaScript. Nesse projeto utilizamos funções de alerta da web para sinalizar algo ou para pedir uma confirmação, utilizamos estruturas condicionais e de controle para permitir o acesso do site ou não.
+                        <h2> Circuito do Farol </h2>
+                        O circuito do farol foi desáfio passado, para que nós criassemos três faróis sendo eles dois faróis para carros e um para pedestres. A intenção desse desáfio foi desenvolver lógicas de progrmação usando estruturas de controles e funções.  
                          <hr>
                         <div class="prints">
                             <img src="../Automação - ok/3-circuito-farol - ok/farol1.jpg" width="950"></div> <hr>
-                            Também usamos operadores aritméticos treinar e criar lógicas de programação 
+                           
                          <hr>
                         <div class="prints">
                             <img src="../Automação - ok/3-circuito-farol - ok/farol2.jpg" width="950">
                         </div>
-                        <a class="projeto" href="../Linguagem Programação - ok/3 - página-acesso - ok/index.html"> Projeto </a> 
+                        <div class="textarea">
+                            <textarea name="farol" id="codigo" cols="32" rows="20" >
+                                int greenA = 6;
+                                int yellowA = 5;
+                                int redA = 4;
+                                int greenS = 7;
+                                int redS = 3;
+                                int greenB = 2;
+                                int yellowB = 1;
+                                int redB = 0;
+                                int btn = 8;
+                                int i = 0;
+                                
+                                
+                                void setup()
+                                {
+                                  pinMode(greenA, OUTPUT);
+                                  pinMode(yellowA, OUTPUT);
+                                  pinMode(redA, OUTPUT);
+                                  pinMode(greenS, OUTPUT);
+                                  pinMode(redS, OUTPUT);
+                                  pinMode(greenB, OUTPUT);
+                                  pinMode(yellowB, OUTPUT);
+                                  pinMode(redB, OUTPUT);
+                                  pinMode(btn, INPUT_PULLUP);
+                                  
+                                  
+                                  digitalWrite(redA,HIGH);
+                                  digitalWrite(redB,HIGH);
+                                  digitalWrite(redS,HIGH);
+                                  digitalWrite(btn, HIGH);
+                                  
+                                }
+                                
+                                void loop(){
+                                  while(digitalRead(btn) == LOW){
+                                     for(i=0;i<=4;i++){
+                                       rua1();
+                                       rua2();
+                                      }
+                                       delay(500);
+                                       pedestre(); 
+                                   }
+                                  while(digitalRead(btn) == HIGH){
+                                     pedestre();
+                                   }
+                                }
+                                
+                                               
+                                void rua1(){
+                                   digitalWrite(redA,LOW);
+                                   digitalWrite(greenA, HIGH);
+                                   delay(2000); 
+                                   digitalWrite(greenA, LOW);
+                                   digitalWrite(yellowA, HIGH);
+                                   delay(500);
+                                   digitalWrite(yellowA, LOW);
+                                   digitalWrite(redA, HIGH);
+                                  }
+                                
+                                               
+                                void rua2(){
+                                   digitalWrite(redB,LOW);
+                                   digitalWrite(greenB, HIGH);
+                                   delay(2000); 
+                                   digitalWrite(greenB, LOW);
+                                   digitalWrite(yellowB, HIGH);
+                                   delay(500);
+                                   digitalWrite(yellowB, LOW);
+                                   digitalWrite(redB, HIGH);
+                                }
+                                
+                                void pedestre(){
+                                  digitalWrite(redS,LOW);
+                                  digitalWrite(redA,HIGH);
+                                  digitalWrite(yellowA,LOW);
+                                  digitalWrite(greenA,LOW);
+                                  digitalWrite(redB,HIGH);
+                                  digitalWrite(yellowB,LOW);
+                                  digitalWrite(greenB,LOW);
+                                  digitalWrite(greenS,HIGH);
+                                  delay(4000);
+                                  digitalWrite(redS, HIGH);
+                                  digitalWrite(greenS,LOW);
+                                }
+                            </textarea>
+                        </div> 
                     </div>
+                    <a class="projeto" href="./auto.html"> Voltar </a>
                 </ul>
             </div>
         </section>

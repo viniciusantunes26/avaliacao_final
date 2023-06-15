@@ -137,6 +137,26 @@ header .navegacao li a:hover::after {
     border-radius: 15px;
 }
 
+.exercicios{
+    width: 600px;
+    display: flex;
+}
+
+.exercicios div{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+.textarea{
+    text-align: left;
+}
+
+.codigo{
+    
+    align-items: left;
+    padding: 0;
+}
 .prints{
     background-color: #000;
     width: 1000px;
